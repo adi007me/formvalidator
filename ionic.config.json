@@ -1,5 +1,7 @@
 {
   "name": "FormValidator",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
