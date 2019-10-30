@@ -1,7 +1,36 @@
-.scan-buttons {
+.scan-page-content {
     padding: 2vw;
 
-    .scanned-image {
-        
+    .scanned-images {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 4vw 0;
+
+        .scanned-image {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            margin: 2vw 2vw 0 0;
+
+            img {
+                height: 40vw;
+                width: 40vw;
+            }
+
+            .scanned-image-footer {
+                display: flex;
+                width: 100%;
+
+                .title {
+                    margin-right: auto;
+                }
+
+                .scanned-image-action {
+                    height: 7vw;
+                    width: 7vw;
+                }
+            }
+        }
     }
 }

@@ -7,18 +7,39 @@
 </ion-header>
 
 <ion-content>
-  <div class="scan-buttons">
-    <ion-button color="primary" shapre="round" (click)="takePicture()">
-      Take Picture
-    </ion-button>
+  <div class="scan-page-content">
+    <div class="scan-buttons">
+      <ion-button color="primary" shapre="round" (click)="takePicture()">
+        Take Picture
+      </ion-button>
 
-    <img [(src)]="scannedImage" *ngIf="scannedImage" class="scanned-image">
+      <ion-button [color]="scannedImages.length? 'success':'dark'" [disabled]="!scannedImages.length" shapre="round" (click)="submit()">
+        Submit
+      </ion-button>
+    </div>
 
-    <span *ngIf="!scannedImage">
-      Please scan image
-    </span>
+    <div class="scanned-images">
+      <div class="scanned-image" *ngFor="let image of scannedImages">
+        <img [(src)]="image.imageData">
+
+        <div class="scanned-image-footer">
+          <span class="title">
+            Page {{ image.index }}
+          </span>
+
+          <ion-icon slot="icon-only" name="refresh-circle" class="scanned-image-action" (click)="removeImage(image)"></ion-icon>
+
+          <ion-icon slot="icon-only" name="close-circle" class="scanned-image-action" 
+            (click)="removeImage(image)" color="danger">
+          </ion-icon>
+        </div>
+      </div>
+
+      <span *ngIf="!scannedImages.length">
+          No pictures scanned yet
+      </span>
+    </div>
   </div>
-
 
   <hr>
   <!-- Default -->
