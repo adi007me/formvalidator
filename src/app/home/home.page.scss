@@ -1,9 +1,24 @@
 .homepage {
   .card {
-    padding: 0 10vw;
+    padding: 0 5vw;
 
-    .card-img {
-      
+    .icon {
+        width: 10vw;
+        height: 10vw;
+    }
+
+    .card-header {
+        display: flex;
+
+        .title {
+            align-self: center;
+            font-size: 5vw;
+            margin: 0 2vw;
+        }
+
+        .badge {
+            align-self: center;
+        }
     }
   }
 }

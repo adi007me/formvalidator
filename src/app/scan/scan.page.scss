@@ -1,6 +1,10 @@
 .scan-page-content {
     padding: 2vw;
 
+    .scan-buttons {
+        margin-top: 2vw;
+    }
+
     .scanned-images {
         display: flex;
         flex-wrap: wrap;

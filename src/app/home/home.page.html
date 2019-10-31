@@ -1,46 +1,108 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Form Validator
+      Smart Scan
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="homepage">
-    <ion-card class="card">
-      <ion-card-header>
-        <ion-card-title>New Scan</ion-card-title>
+    <ion-card class="card" routerLink="/scan">
+      <ion-card-header class="card-header">
+        <ion-icon name="add-circle" class="icon" color="primary"></ion-icon>
+
+        <ion-card-title class="title">
+            New Application
+        </ion-card-title>
       </ion-card-header>
 
-      <button class="ion-activatable" routerLink="/scan">
-        <img src="/assets/icon/scan-icon.jpg" alt="" class="card-img" />
-
-        <ion-ripple-effect></ion-ripple-effect>
-      </button>
-
-      
-      
-      <ion-card-content>
+      <ion-card-content class="content">
         <p>
-          Start Scanning new Form.
-          ...... Other instructions
+          Start scanning new application.
         </p>
       </ion-card-content>
+
+      <ion-ripple-effect></ion-ripple-effect>
     </ion-card>
 
-    <ion-card class="card">
-      <ion-card-header>
-        <ion-card-title>Reports</ion-card-title>
+    <ion-card class="card" routerLink="/applications/submitted">
+      <ion-card-header class="card-header">
+        <ion-icon name="checkmark-circle" class="icon" color="success"></ion-icon>
+
+        <ion-card-title class="title">
+            Submitted Applications
+        </ion-card-title>
+
+        <ion-badge class="badge" color="success">11</ion-badge>
       </ion-card-header>
 
-      <img src="" alt="" />
-      
-      <ion-card-content>
+      <ion-card-content class="content">
         <p>
-          Click to check reports.
-          ...... Other instructions
+          View submitted applications
         </p>
       </ion-card-content>
+
+      <ion-ripple-effect></ion-ripple-effect>
     </ion-card>
-    
+
+    <ion-card class="card" routerLink="/applications/pended">
+      <ion-card-header class="card-header">
+        <ion-icon name="information-circle" class="icon" color="warning"></ion-icon>
+
+        <ion-card-title class="title">
+            Pended Applications
+        </ion-card-title>
+
+        <ion-badge class="badge" color="warning">2</ion-badge>
+      </ion-card-header>
+
+      <ion-card-content class="content">
+        <p>
+          View pended applications
+        </p>
+      </ion-card-content>
+
+      <ion-ripple-effect></ion-ripple-effect>
+    </ion-card>
+
+    <ion-card class="card" routerLink="/applications/all">
+      <ion-card-header class="card-header">
+        <ion-icon name="apps" class="icon" color="primary"></ion-icon>
+
+        <ion-card-title class="title">
+            All Applications
+        </ion-card-title>
+
+        <ion-badge class="badge" color="primary">100</ion-badge>
+      </ion-card-header>
+
+      <ion-card-content class="content">
+        <p>
+          View all applications
+        </p>
+      </ion-card-content>
+
+      <ion-ripple-effect></ion-ripple-effect>
+    </ion-card>
+
+    <ion-card class="card" routerLink="/applications/all">
+      <ion-card-header class="card-header">
+        <ion-icon name="briefcase" class="icon" color="primary"></ion-icon>
+
+        <ion-card-title class="title">
+            All Applications
+        </ion-card-title>
+
+        <ion-badge class="badge" color="primary">100</ion-badge>
+      </ion-card-header>
+
+      <ion-card-content class="content">
+        <p>
+          View all applications
+        </p>
+      </ion-card-content>
+
+      <ion-ripple-effect></ion-ripple-effect>
+    </ion-card>
+
 </ion-content>

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ScanPage } from './scan/scan.page';
+import { ApplicationListPage } from './application-list/applicationList.page';
 
 const routes: Routes = [
   {
@@ -10,6 +11,10 @@ const routes: Routes = [
   {
     path: 'scan',
     loadChildren: () => import('./scan/scan.module').then(m => m.ScanPageModule)
+  },
+  {
+      path: 'applications/:listtype',
+      component: ApplicationListPage
   }
 ];
 @NgModule({
