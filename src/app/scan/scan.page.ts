@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { CameraService } from '../services/camera/camera.service';
 import { ScannedImage } from '../models/ScannedImage';
+import { ValidatorService } from '../services/validator/validator.service';
+import { SmartScanForm } from '../models/SmartScanForm';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-scan',
@@ -10,7 +13,8 @@ import { ScannedImage } from '../models/ScannedImage';
 export class ScanPage {
   private scannedImages: ScannedImage[];
 
-  constructor(private cameraService: CameraService) {
+  constructor(private cameraService: CameraService, private validatorService: ValidatorService,
+    private platform: Platform) {
     this.scannedImages = new Array();
   }
 
@@ -20,31 +24,46 @@ export class ScanPage {
       index: this.scannedImages.length
     };
 
-    this.scannedImages.push(si);
+    if (this.platform.is('cordova')) {
+        this.cameraService.getPicture().then((imageData) => {
+            var scannedImg = {
+                imageData: 'data:image/jpeg;base64,' + imageData,
+                index: this.scannedImages.length
+            };
 
-    this.cameraService.getPicture().then((imageData) => {
-      var scannedImg = {
-        imageData: 'data:image/jpeg;base64,' + imageData,
-        index: this.scannedImages.length
-      };
-
-      this.scannedImages.push(scannedImg);
-     }, (err) => {
-      throw err;
-     });;
+            this.scannedImages.push(scannedImg);
+        }, (err) => {
+            throw err;
+        });
+    } else {
+        this.scannedImages.push(si);
+    }
   }
 
   submit() {
     console.log('Submitting...');
+    let input: SmartScanForm = {
+        FirstName: 'FirstName',
+        LastName: 'LastName',
+        SSN: 'SSN',
+        FormPages: [
+            {
+                imageData: this.scannedImages[0].imageData,
+                index: 0
+            }
+        ]
+    }
+    this.validatorService.validateForm(input).then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        console.log(error);
+    });
   }
 
   removeImage(image: ScannedImage) {
     var index = this.scannedImages.indexOf(image);
 
     this.scannedImages.splice(index, 1);
-    // console.log(index, this.scannedImages.length);
-    // if (this.scannedImages.length > index) {
-    //   this.scannedImages.splice(index, 1);
-    // }
   }
 }

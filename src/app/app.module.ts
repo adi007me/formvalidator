@@ -12,6 +12,8 @@ import { CameraService } from './services/camera/camera.service';
 import { Camera } from '@ionic-native/camera/ngx';
 import { ApplicationListPage } from './application-list/applicationList.page';
 import { HomePage } from './home/home.page';
+import { ValidatorService } from './services/validator/validator.service';
+import { HTTP } from '@ionic-native/http/ngx';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { HomePage } from './home/home.page';
     CameraService,
     StatusBar,
     SplashScreen,
+    ValidatorService,
+    HTTP,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
