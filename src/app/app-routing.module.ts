@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ScanPage } from './scan/scan.page';
 import { ApplicationListPage } from './application-list/applicationList.page';
+import { HomePage } from './home/home.page';
 
 const routes: Routes = [
   {
-    path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+      path: 'home',
+      component: HomePage
   },
   {
     path: 'scan',
@@ -15,6 +16,11 @@ const routes: Routes = [
   {
       path: 'applications/:listtype',
       component: ApplicationListPage
+  },
+  {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
   }
 ];
 @NgModule({
