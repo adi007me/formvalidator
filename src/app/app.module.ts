@@ -14,15 +14,18 @@ import { ApplicationListPage } from './application-list/applicationList.page';
 import { HomePage } from './home/home.page';
 import { ValidatorService } from './services/validator/validator.service';
 import { HTTP } from '@ionic-native/http/ngx';
+import { SettingsPage } from './settings/settings.page';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
       AppComponent,
       ApplicationListPage,
+      SettingsPage,
       HomePage
     ],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule],
   providers: [
     Camera,
     CameraService,

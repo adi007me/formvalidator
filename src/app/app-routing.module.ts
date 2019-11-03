@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ScanPage } from './scan/scan.page';
 import { ApplicationListPage } from './application-list/applicationList.page';
 import { HomePage } from './home/home.page';
+import { SettingsPage } from './settings/settings.page';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
       path: 'applications/:listtype',
       component: ApplicationListPage
+  },
+  {
+    path: 'settings',
+    component: SettingsPage
   },
   {
     path: '',
