@@ -12,6 +12,7 @@
 
 <ion-content>
   <div class="scan-page-content">
+    <ion-card>
     <div class="new-application-info">
         <div>
             <ion-item>
@@ -37,10 +38,22 @@
 
     <div class="scan-buttons">
       <ion-button color="primary" shapre="round" (click)="takePicture()">
-        Take Picture
+        <ion-icon name="camera" class="scan-button-icon"></ion-icon>
+
+        Scan
+      </ion-button>
+
+      <ion-button [color]="primary" shapre="round" (click)="selectFile()">
+        <ion-icon name="document" class="scan-button-icon"></ion-icon>
+
+        File
+
+        <input type="file" id="file-native">
       </ion-button>
 
       <ion-button [color]="scannedImages.length? 'success':'dark'" [disabled]="!scannedImages.length" shapre="round" (click)="submit()">
+        <ion-icon name="send" class="scan-button-icon"></ion-icon>
+        
         Submit
       </ion-button>
     </div>
@@ -54,17 +67,41 @@
             Page {{ i + 1 }}
           </span>
 
-          <ion-icon slot="icon-only" name="refresh-circle" class="scanned-image-action" (click)="removeImage(image)"></ion-icon>
+          <ion-icon slot="icon-only" name="reverse-camera" class="scanned-image-action" (click)="removeImage(image)"></ion-icon>
 
           <ion-icon slot="icon-only" name="close-circle" class="scanned-image-action"
             (click)="removeImage(image)" color="danger">
           </ion-icon>
         </div>
+
+        <ion-progress-bar type="indeterminate" *ngIf="submitting"></ion-progress-bar>
       </div>
 
       <span *ngIf="!scannedImages.length">
           No pages scanned yet
       </span>
+    </div>
+    </ion-card>
+
+    <div class="validation-results" *ngIf="validationResults.length">
+
+        <ion-card>
+          <ion-card-header class="validation-results-header">
+            <ion-card-title>Validation Results</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <ul class="list">
+              <li *ngFor="let val of validationResults" class="list-item">
+                  <ion-icon name="checkmark-circle" color="success" *ngIf="val.value === 'filled'"></ion-icon>
+      
+                  <ion-icon name="close-circle" color="danger" *ngIf="val.value !== 'filled'"></ion-icon>
+      
+                  {{ val.key }}: {{ val.value }}
+              </li>
+            </ul>
+          </ion-card-content>
+        </ion-card>
     </div>
   </div>
 </ion-content>

@@ -2,13 +2,24 @@
     padding: 2vw;
 
     .scan-buttons {
+        display: flex;
+        justify-content: space-around;
         margin-top: 2vw;
+        padding-left: calc(var(--padding-start) + var(--ion-safe-area-left, 0px));
+
+        #file-native {
+            display: none;
+        }
+
+        .scan-button-icon {
+            padding-right: 2vw;
+        }
     }
 
     .scanned-images {
         display: flex;
         flex-wrap: wrap;
-        margin: 4vw 0;
+        margin: 4vw;
 
         .scanned-image {
             align-items: center;
@@ -34,6 +45,26 @@
                     height: 7vw;
                     width: 7vw;
                 }
+            }
+        }
+    }
+
+    .validation-results {
+        .title {
+            padding-left: 0;
+        }
+
+        .validation-results-header {
+            font-size: 6vw;
+        }
+
+        .list {
+            font-size: 5vw;
+            list-style: none;
+            padding-left: 0;
+
+            .list-item {
+                margin: 2vw 0;
             }
         }
     }

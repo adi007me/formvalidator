@@ -1,3 +1,18 @@
+.homepage-header {
+  display: flex;
+  align-items: center;
+
+  .logo {
+    height: 12vw;
+    margin-left: 10px;
+  }
+
+  .title {
+    font-size: 10vw;
+    font-family: cursive;
+  }
+}
+
 .homepage {
   .card {
     padding: 0 5vw;

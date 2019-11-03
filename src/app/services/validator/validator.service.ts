@@ -10,36 +10,50 @@ export class ValidatorService {
   constructor(private http: HTTP, private platform: Platform) { }
 
   validateForm(smartScanForm: SmartScanForm) {
-    const url = 'https://syntbots.eastasia.cloudapp.azure.com:5008/ai/humanaextract';
+    const url = 'http://13.75.106.59:5008/ai/humanaextract1';
     let formData:FormData = new FormData();
-
-    let headers = new Headers();
-    headers.append('Content-Type', 'multipart/form-data');
-    headers.append('Accept', 'application/json');
-
-    let httpOptions = { headers: headers };
 
     formData.append('file', this.B64toBlob(smartScanForm.FormPages[0].imageData), 'file.name' + Math.random() + '.jpg');
 
-    if (this.platform.is('cordova')) {
-        return this.http.post(url, formData, httpOptions);
-    } else {
-        fetch(url, {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(success => {
-            console.log(success);
+    return new Promise((resolve, reject) => {
+      fetch(url, {
+          body: formData,
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'Accept': 'application/json'
+          },
+          method: 'POST'
+      })
+      .then(response => {
+        console.log(response);
 
-            return Promise.resolve(success)
-        })
-        .catch(error => {
-            console.log(error)
+        return response.json()
+      })
+      .then(success => {
+          console.log(success);
 
-            return Promise.resolve(error);
-        })
-    }
+          return resolve(success.response.file_response)
+      })
+      .catch(error => {
+          console.log(error)
+
+          return reject(error);
+      });
+
+      setTimeout(() => {
+        console.log('Mock Data');
+        
+        const mockResponse = [{
+          key: 'First Name', value: "filled"
+          }, {
+            key: 'Last Name', value: "filled"
+          }, {
+            key: 'SSN', value: "missing"
+        }];
+
+        resolve(mockResponse)
+      }, 5000);
+    });
   }
 
   private B64toBlob(dataURI) {
