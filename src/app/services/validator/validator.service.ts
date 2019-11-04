@@ -10,7 +10,7 @@ export class ValidatorService {
   constructor(private http: HTTP, private platform: Platform) { }
 
   validateForm(smartScanForm: SmartScanForm) {
-    const url = 'http://13.75.106.59:5008/ai/humanaextract1';
+    const url = 'https://13.75.106.59:443/syntbots-ai/humana/ai/humanaextract1';
     let formData:FormData = new FormData();
 
     formData.append('file', this.B64toBlob(smartScanForm.FormPages[0].imageData), 'file.name' + Math.random() + '.jpg');
@@ -40,19 +40,20 @@ export class ValidatorService {
           return reject(error);
       });
 
-      setTimeout(() => {
-        console.log('Mock Data');
+      //Mock Data
+      // setTimeout(() => {
+      //   console.log('Mock Data');
         
-        const mockResponse = [{
-          key: 'First Name', value: "filled"
-          }, {
-            key: 'Last Name', value: "filled"
-          }, {
-            key: 'SSN', value: "missing"
-        }];
+      //   const mockResponse = [{
+      //     key: 'First Name', value: "filled"
+      //     }, {
+      //       key: 'Last Name', value: "filled"
+      //     }, {
+      //       key: 'SSN', value: "missing"
+      //   }];
 
-        resolve(mockResponse)
-      }, 5000);
+      //   resolve(mockResponse)
+      // }, 5000);
     });
   }
 
