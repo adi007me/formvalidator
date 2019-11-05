@@ -37,13 +37,13 @@
     </div>
 
     <div class="scan-buttons">
-      <ion-button color="primary" shapre="round" (click)="takePicture()">
+      <ion-button color="primary" shapre="round" (click)="takePicture()" [disabled]="submitting">
         <ion-icon name="camera" class="scan-button-icon"></ion-icon>
 
         Scan
       </ion-button>
 
-      <ion-button [color]="primary" shapre="round" (click)="selectFile()">
+      <ion-button [color]="primary" shapre="round" (click)="selectFile()" [disabled]="submitting">
         <ion-icon name="document" class="scan-button-icon"></ion-icon>
 
         File
@@ -51,7 +51,7 @@
         <input type="file" id="file-native">
       </ion-button>
 
-      <ion-button [color]="scannedImages.length? 'success':'dark'" [disabled]="!scannedImages.length" shapre="round" (click)="submit()">
+      <ion-button [color]="scannedImages.length? 'success':'dark'" [disabled]="!scannedImages.length || submitting" shapre="round" (click)="submit()">
         <ion-icon name="send" class="scan-button-icon"></ion-icon>
         
         Submit
@@ -93,9 +93,9 @@
           <ion-card-content>
             <ul class="list">
               <li *ngFor="let val of validationResults" class="list-item">
-                  <ion-icon name="checkmark-circle" color="success" *ngIf="val.value === 'filled'"></ion-icon>
+                  <ion-icon name="checkmark-circle" color="success" *ngIf="val.value.toLowerCase() === 'filled'"></ion-icon>
       
-                  <ion-icon name="close-circle" color="danger" *ngIf="val.value !== 'filled'"></ion-icon>
+                  <ion-icon name="close-circle" color="danger" *ngIf="val.value.toLowerCase() !== 'filled'"></ion-icon>
       
                   {{ val.key }}: {{ val.value }}
               </li>
