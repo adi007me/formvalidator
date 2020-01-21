@@ -12,7 +12,7 @@ export class ValidatorService {
   constructor(private http: HTTP, private platform: Platform, private toastController: ToastController) { }
 
   validateForm(smartScanForm: SmartScanForm) {
-    const url = 'http://13.75.106.59/syntbots-ai/humana/ai/humanaextract1';
+    const url = 'http://13.75.106.59:5003/ai/humanaextract1';
     let formData:FormData = new FormData();
 
     formData.append('file', this.B64toBlob(smartScanForm.FormPages[0].imageData), 'file.name' + Math.random() + '.jpg');
