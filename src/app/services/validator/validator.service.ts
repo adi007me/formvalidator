@@ -92,7 +92,7 @@ export class ValidatorService {
     keys.forEach(key => {
       const validationResultItem: ValidationResultItem = {
         key: key,
-        value: response[key].length ? response[key][0]:response[key]
+        value: response[key]
       };
 
       validationResults.push(validationResultItem);
