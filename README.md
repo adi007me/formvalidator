@@ -12,7 +12,7 @@ Form validator is a hybrid application for handwritten form validations.
 * Run command `npm i`. This will install required dependencies
 * Run command `npm install ionic -g`. This will install _ionic_ globally
 * To start application locally, run `ionic serve`. This will start the application on the browser. Note that device capabilities (camera etc.) will not be available in this mode.
-* To build the application for _android_, run `ionic build cordova android`. This command will generate .apk file at _platforms\android\app\build\outputs\apk\debug\app-debug.apk_ location.
+* To build the application for _android_, run `ionic cordova build android`. This command will generate .apk file at _platforms\android\app\build\outputs\apk\debug\app-debug.apk_ location.
 * Copy the file on _android_ device and install the application. Note that you may have to enable sideloading on the device.
 
 ## Debugging on Device
