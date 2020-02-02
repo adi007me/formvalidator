@@ -93,9 +93,9 @@
           <ion-card-content>
             <ul class="list">
               <li *ngFor="let val of validationResults" class="list-item">
-                  <ion-icon name="checkmark-circle" color="success" *ngIf="val.value.toLowerCase() === 'filled'"></ion-icon>
+                  <ion-icon name="checkmark-circle" color="success" *ngIf="val.value"></ion-icon>
       
-                  <ion-icon name="close-circle" color="danger" *ngIf="val.value.toLowerCase() !== 'filled'"></ion-icon>
+                  <ion-icon name="close-circle" color="danger" *ngIf="!val.value"></ion-icon>
       
                   {{ val.key }}: {{ val.value }}
               </li>
