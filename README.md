@@ -14,6 +14,8 @@ Form validator is a hybrid application for handwritten form validations.
 * To start application locally, run `ionic serve`. This will start the application on the browser. Note that device capabilities (camera etc.) will not be available in this mode.
 * To build the application for _android_, run `ionic cordova build android`. This command will generate .apk file at _platforms\android\app\build\outputs\apk\debug\app-debug.apk_ location.
 * Copy the file on _android_ device and install the application. Note that you may have to enable sideloading on the device.
+* To run the applicaiton (.apk) directly on device, run command `ionic cordova run android`
+* For more `ionic` commands refer https://ionicframework.com/docs/v3/cli/commands.html
 
 ## Debugging on Device
 * Connect the device and computer using USB cable
@@ -21,4 +23,3 @@ Form validator is a hybrid application for handwritten form validations.
 * Run the application on device
 * Open chrome browser on the computer and navigate to `chrome://inspect/#devices`
 * Locate the application in the list displayed on above page and use _chrome dev tools_ for debugging
-
